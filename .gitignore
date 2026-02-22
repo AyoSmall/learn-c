@@ -1,0 +1,11 @@
+# Executables
+*.exe
+*.out
+*.o
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
