@@ -24,7 +24,6 @@ int main(){
     if (input == "n" || input == "no"){
         return 0;
     } 
-    else
     
     // Render grid as text
     while (true){
