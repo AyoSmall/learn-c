@@ -1,6 +1,6 @@
 #include <iostream>
 
-// This code implements a grid using C-style arrays
+// This code implements a navigable grid using C-style arrays
 int main(){
 
     constexpr int y{3},x{5}; // y{rows},x{columns}
@@ -57,7 +57,8 @@ int main(){
             break;
         }
 
-        std::system("clear");
+        std::system("clear"); // Linux terminal
+        system("cls"); // Windows terminal
     }
 
     return 0;
