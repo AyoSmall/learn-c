@@ -66,7 +66,7 @@ int main(){
 
 /*
 // todo:
-// Generate grid of (x,y) dimensions
-// Generate exit at some coordinate
-// End game when exit found
+// Add static obstacle
+// Add moving obstacle
+// Add player attack
 */
