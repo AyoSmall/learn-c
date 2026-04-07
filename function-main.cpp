@@ -37,14 +37,6 @@ int main()
     dee();
     dum();
 
-    std::string input{};
-    while (input != "yes" && input != "y")
-    {
-        input = "";
-        std::cout << "\nContinue? yes/y    --->  ";
-        std::cin >> input;
-    }
-
     get_num();                                                 // returns a value, which is then discarded
     double_num(get_num());                                     // nested function calls. main() calls double_num() calls get_num()
     other_file();
