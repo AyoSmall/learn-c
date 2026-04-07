@@ -13,19 +13,26 @@ void dum()
 {
     std::cout << "Start dum()\n";
 
-    dee();                                      // nested function call, dee() is already defined :]
+    dee();                                                      // nested function call, dee() is already defined :]
 
     std::cout << "End dum()\n";
 }
 
-std::string get_name()                          // This function has a non-void return type!
+int get_num()                                                  // this function has a non-void return type!
 {
-    std::string name{};                         // there must be some value to return
+    int num{};                                                 // declare int num{}, there must be some value to return...
 
-    std::cout << "What's your name?    ";
-    std::cin >> name;
+    std::cout << "What's your favourite number?    ";
+    std::cin >> num;
 
-    return name;                                // this function returns something
+    return num;                                                // this function returns something
+}
+
+int double_num(int param)                                      // this function takes a parameter
+{
+    int value{param * 2};
+    std::cout << value << "\n";
+    return value;
 }
 
 int main()
@@ -33,10 +40,10 @@ int main()
     std::cout << "Start main()\n";
 
     dee();
-
     dum();
 
-    get_name();
+    get_num();                                                 // returns a value, which is then discarded
+    double_num(get_num());                                     // nested function calls. main() calls double_num() calls get_num()
 
     std::cout << "End main()\n";
     return 0;    
