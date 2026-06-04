@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void check_best_num(int *x, int best);
+void check_best_num(int* x, int best);
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
     return 0;
 }
 
-void check_best_num(int *x, int best)
+void check_best_num(int* x, int best)
 {
     while (*x != best)
     {
@@ -30,9 +30,9 @@ void check_best_num(int *x, int best)
     printf("YES! %d!\nThat's the best num...\n", *x);
 }
 
-// int *x;                              declare variable of type pointer-to-int
+// int* x;                              declare variable of type pointer-to-int
 // *x                                   the value stored at the memory address
-// int *x = malloc(sizeof(*x));         initialise with free memory of size int
+// int* x = malloc(sizeof(*x));         initialise with free memory of size int
 // free(x);                             return memory to the OS (NB please set to null)
 
 // int val;     declare variable of type int
