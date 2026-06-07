@@ -1,4 +1,4 @@
-// Array with two index addresses
+// Array with two accessible dimensions
 #include <stdio.h>
 #include <stdlib.h>
 
