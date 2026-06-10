@@ -1,7 +1,9 @@
-# Executables
+# Executables / Data
 *.exe
 *.out
 *.o
+*.bin
+*.iso
 
 # Editor / IDE
 .vscode/
