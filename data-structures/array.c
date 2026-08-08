@@ -1,58 +1,30 @@
 /*
-    Elements of the same type stored in contiguous memory.
-
-    - Contiguous memory locations
-    - Each element has same size and type
-    - index + (i * element_size)
-    This code manipulates data in an array
-    The plan is to replace the standard C language array with a custom implementation.
-
+    Implementation of an integer array
     TODO:
-        - create custom array struct
-        - edit functions to work with struct
-        - edit main to test array
-        - convert array struct/functions to dynamic array
-        - finishing touches for portability as custom integer array type
+        - edit functions to accept address of array structure as parameter
+        - write a test program which utilises custom array
 */
 
 
-#include <stdio.h>
-#define CAPACITY 10
 
-void array_print(int* head, int capacity);
-void array_init(int* head, int capacity, int to_push);
-int array_push_back(int* head, int* size, int capacity, int to_push);
-int array_push_back_many(int* head, int* size, int capacity, int to_push, int to_push_amount);
 
-int main(void)
+/*
+    Structure
+*/
+struct array_int
 {
-    int array[CAPACITY];
-    int array_size = 0;
-    // int array_push_back(int* head, int* size, int capacity, int to_push);
-
-    // Initialise array contents
-    array_init(array, CAPACITY, 0);
-
-    // Print array contents
-    array_print(array, CAPACITY);
-
-    // Push values to array
-    array_push_back(array, &array_size, CAPACITY, 69);
-
-    // Print array contents
-    array_print(array, CAPACITY);
-
-    // Push multiple values to array
-    array_push_back_many(array, &array_size, CAPACITY, 8, 9);
-
-    // Print array contents
-    array_print(array, CAPACITY);
-
-    return 0;
-}
+    int* data;      // pointer to memory address of array's first location
+    size_t size;       // marks the range of accessible locations of the array
+    size_t capacity;   // all memory currently allocated to the array
+};
 
 
 
+/*
+    Functions
+*/
+
+// Print contents of an integer array to console
 void array_print(int* head, int size)
 {
     printf("\n\n");
@@ -62,6 +34,7 @@ void array_print(int* head, int size)
     }
 }
 
+// Initialise an integer array (currently that means populating with 0)
 void array_init(int* head, int capacity, int to_push)
 {
     for (int i = 0; i < capacity; ++i)
@@ -71,6 +44,7 @@ void array_init(int* head, int capacity, int to_push)
     }
 }
 
+// Copy an integer value to the final position, Increase the accessible memory of an integer array by 1
 int array_push_back(int* head, int* size, int capacity, int to_push)
 {
 
@@ -87,6 +61,7 @@ int array_push_back(int* head, int* size, int capacity, int to_push)
 }
 
 // unused arguments to be struct members (remove if still unused)
+// Decrease the accessible memory of an integer array by 1 (data in the now inaccessible location still exists and may be overwritten)
 int array_pop_back(int *head, int* size, int capacity)
 {
     if (*size <= 0)
@@ -98,6 +73,7 @@ int array_pop_back(int *head, int* size, int capacity)
     return 1;
 }
 
+// Copy an integer value to the final position, Increase the accessible memory of an integer array by 1 (do n times)
 int array_push_back_many(int* head, int* size, int capacity, int to_push, int to_push_amount)
 {
     int push_count = 0;
