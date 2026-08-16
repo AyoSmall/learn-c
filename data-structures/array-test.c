@@ -17,31 +17,32 @@
 
 
 #include <stdio.h>
-#include <array.c>
+#include "array.c"
 #define CAPACITY 10
 
 int main(void)
 {
     // int array[CAPACITY];
     // int array_size = 0;
+    struct array_int_t array;
 
     // Initialise array contents
-    array_init(array, CAPACITY, 0);
+    array_init(&array, CAPACITY);
 
     // Print array contents
-    array_print(array, CAPACITY);
+    array_print(&array);
 
-    // Push values to array
-    array_push_back(array, &array_size, CAPACITY, 69);
+    // // Push values to array
+    // array_push_back(array, &array_size, CAPACITY, 69);
 
-    // Print array contents
-    array_print(array, CAPACITY);
+    // // Print array contents
+    // array_print(array, CAPACITY);
 
-    // Push multiple values to array
-    array_push_back_many(array, &array_size, CAPACITY, 8, 9);
+    // // Push multiple values to array
+    // array_push_back_many(array, &array_size, CAPACITY, 8, 9);
 
-    // Print array contents
-    array_print(array, CAPACITY);
+    // // Print array contents
+    // array_print(array, CAPACITY);
 
     return 0;
 }
