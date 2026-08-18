@@ -1,11 +1,12 @@
 /*
     Implementation of an integer array
     TODO:
-        - edit push/pop functions to accept address of array structure as parameter
-        - write a test program which utilises custom array
+        - create destructor function (free memory in reverse order of allocation/creation)
 */
 
+#pragma once
 #include <stdlib.h>
+#include <stdio.h>
 
 
 /*
@@ -35,11 +36,17 @@ void array_print(struct array_int_t* array)
 }
 
 // Initialise an integer array 
-void array_init(struct array_int_t* array, size_t capacity)
+int array_init(struct array_int_t* array, size_t capacity)
 {
-    array->size = 0;
+    if (capacity <= 0) return 0;
     array->capacity = capacity;
+    
     array->data = malloc(sizeof(*array->data) * array->capacity);
+    if (array->data == NULL) return 0;
+
+    array->size = 0;
+
+    return 1;
 }
 
 // Copy an integer value to the final position, Increase the accessible memory of an integer array by 1
@@ -60,7 +67,7 @@ int array_push_back(struct array_int_t* array, int to_push)
 // Decrease the accessible memory of an integer array by 1 (data in the now inaccessible location still exists and may be overwritten)
 int array_pop_back(struct array_int_t* array)
 {
-    if (array->size <= 0)
+    if (array->size == 0)
     {
         return 0;
     }
@@ -70,15 +77,15 @@ int array_pop_back(struct array_int_t* array)
 }
 
 // Copy an integer value to the final position, Increase the accessible memory of an integer array by 1 (do n times)
-int array_push_back_many(struct array_int_t* array, int to_push, int to_push_amount)
+int array_push_back_many(struct array_int_t* array, int to_push, size_t to_push_amount)
 {
-    if (array->capacity - array->size <= 0)
+    if (array->capacity - array->size < to_push_amount)
     {
         printf("\n\nPushed elements exceed available space");
         return 0;
     }
 
-    int push_count = 0;
+    size_t push_count = 0;
     while (push_count < to_push_amount)
     {
         // printf("\n\nEnter an integer: ");

@@ -15,7 +15,6 @@
         - finishing touches for portability as custom integer array type
 */
 
-
 #include <stdio.h>
 #include "array.c"
 #define CAPACITY 10
