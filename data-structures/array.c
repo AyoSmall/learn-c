@@ -42,53 +42,50 @@ void array_init(struct array_int_t* array, size_t capacity)
     array->data = malloc(sizeof(*array->data) * array->capacity);
 }
 
-// // Copy an integer value to the final position, Increase the accessible memory of an integer array by 1
-// int array_push_back(int* head, int* size, int capacity, int to_push)
-// {
+// Copy an integer value to the final position, Increase the accessible memory of an integer array by 1
+int array_push_back(struct array_int_t* array, int to_push)
+{
+    // if (*array.size >= *array.capacity)
+    if (array->size >= array->capacity)
+    {
+        return 0;
+    }
 
-//     if (*size >= capacity)
-//     {
-//         return 0;
-//     }
+    *(array->data + array->size) = to_push; // access value at head+size and replace
+    array->size += 1;                             // value at address "size" is incremented
 
-//     *(head + *size) = to_push; // access value at head+size and replace
-//     *size += 1;               // value at address "size" is incremented
+    return 1;
+}
 
+// Decrease the accessible memory of an integer array by 1 (data in the now inaccessible location still exists and may be overwritten)
+int array_pop_back(struct array_int_t* array)
+{
+    if (array->size <= 0)
+    {
+        return 0;
+    }
 
-//     return 1;
-// }
+    array->size -= 1; // removes popped from valid memory, but it still exists until overwritten
+    return 1;
+}
 
-// // unused arguments to be struct members (remove if still unused)
-// // Decrease the accessible memory of an integer array by 1 (data in the now inaccessible location still exists and may be overwritten)
-// int array_pop_back(int *head, int* size, int capacity)
-// {
-//     if (*size <= 0)
-//     {
-//         return 0;
-//     }
+// Copy an integer value to the final position, Increase the accessible memory of an integer array by 1 (do n times)
+int array_push_back_many(struct array_int_t* array, int to_push, int to_push_amount)
+{
+    if (array->capacity - array->size <= 0)
+    {
+        printf("\n\nPushed elements exceed available space");
+        return 0;
+    }
 
-//     *size -= 1; // removes popped from valid memory, but it still exists until overwritten
-//     return 1;
-// }
+    int push_count = 0;
+    while (push_count < to_push_amount)
+    {
+        // printf("\n\nEnter an integer: ");
+        // scanf("%d", &to_push);
+        array_push_back(array, to_push);
+        push_count += 1;
+    }
 
-// // Copy an integer value to the final position, Increase the accessible memory of an integer array by 1 (do n times)
-// int array_push_back_many(int* head, int* size, int capacity, int to_push, int to_push_amount)
-// {
-//     int push_count = 0;
-
-//     if (capacity - *size < to_push_amount)
-//     {
-//         printf("\n\nPushed elements exceed available space");
-//         return 0;
-//     }
-
-//     while (push_count < to_push_amount)
-//     {
-//         // printf("\n\nEnter an integer: ");
-//         // scanf("%d", &to_push);
-//         array_push_back(head, size, capacity, to_push);
-//         push_count += 1;
-//     }
-
-//     return 1;
-// }
+    return 1;
+}

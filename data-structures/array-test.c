@@ -32,17 +32,23 @@ int main(void)
     // Print array contents
     array_print(&array);
 
-    // // Push values to array
-    // array_push_back(array, &array_size, CAPACITY, 69);
+    // Push values to array
+    array_push_back(&array, 0);
 
-    // // Print array contents
-    // array_print(array, CAPACITY);
+    // Print array contents
+    array_print(&array);
 
-    // // Push multiple values to array
-    // array_push_back_many(array, &array_size, CAPACITY, 8, 9);
+    // Remove values from array
+    array_pop_back(&array);
 
-    // // Print array contents
-    // array_print(array, CAPACITY);
+    // Print array contents
+    array_print(&array);
+
+    // Push multiple values to array
+    array_push_back_many(&array, 1, CAPACITY);
+
+    // Print array contents
+    array_print(&array);
 
     return 0;
 }
