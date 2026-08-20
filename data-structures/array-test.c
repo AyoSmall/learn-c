@@ -8,11 +8,7 @@
     The plan is to replace the standard C language array with a custom implementation.
 
     TODO:
-        - create custom array struct
-        - edit functions to work with struct
         - edit main to test array
-        - convert array struct/functions to dynamic array
-        - finishing touches for portability as custom integer array type
 */
 
 #include <stdio.h>
@@ -45,6 +41,12 @@ int main(void)
 
     // Push multiple values to array
     array_push_back_many(&array, 1, CAPACITY);
+
+    // Print array contents
+    array_print(&array);
+
+    // Destroy array and deallocate memory
+    array_destroy(&array);
 
     // Print array contents
     array_print(&array);
