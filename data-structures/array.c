@@ -1,5 +1,6 @@
 /*
     Implementation of an integer array
+
     TODO:
         - convert array struct/functions to dynamic array
         - finishing touches for portability as custom integer array type
